@@ -15,6 +15,9 @@ source 'https://rubygems.org'
    gem 'sqlite3'
    gem 'listen'
  end
+ group :development, :test do
+   gem 'rspec-rails', '~>3.0'
+ end
 
  # Use SCSS for stylesheets
  gem 'sass-rails', '~> 5.0'
@@ -26,5 +29,7 @@ source 'https://rubygems.org'
  gem 'jquery-rails'
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
+
+ gem 'rails-controller-testing'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
