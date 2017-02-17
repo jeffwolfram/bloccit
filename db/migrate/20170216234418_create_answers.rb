@@ -1,8 +1,8 @@
 class CreateAnswers < ActiveRecord::Migration[5.0]
   def change
     create_table :answers do |t|
-      t.text :question
-      t.text :answer
+      t.references :question, foreign_key: true
+      t.text :body
 
       t.timestamps
     end
