@@ -14,6 +14,7 @@ source 'https://rubygems.org'
  group :development do
    gem 'sqlite3'
    gem 'listen'
+   gem 'pry-rails'
  end
  group :development, :test do
    gem 'rspec-rails', '~>3.0'
@@ -29,8 +30,7 @@ source 'https://rubygems.org'
  gem 'jquery-rails'
  # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
  gem 'turbolinks'
- # another irb type of shell with more features
- gem 'pry-rails'
+
 
  gem 'bootstrap-sass'
 
