@@ -16,9 +16,7 @@ posts = Post.all
   body: RandomData.random_paragraph
   )
 end
-Post.find_or_create_by!(title: 'Hello') do |post|
-  post.body = 'This is just a bunch of random text'
-end
+Post.find_or_create_by!(title: 'Hola', body: 'This is just a bunch of random text')
 puts "Seed finished"
 puts "#{Post.count} posts created"
 puts "#{Comment.count} comments created"
