@@ -6,6 +6,16 @@ require 'random_data'
   )
 end
 topics = Topic.all
+
+51.times do
+  SponsoredPost.create!(
+  topic: topics.sample,
+  title: RandomData.random_sentence,
+  body: RandomData.random_paragraph,
+  price: RandomData.random_number
+  )
+end
+
 #creat posts
 50.times do
 
@@ -27,4 +37,5 @@ Post.find_or_create_by!(title: 'Hola', body: 'This is just a bunch of random tex
 puts "Seed finished"
  puts "#{Topic.count} topics created"
 puts "#{Post.count} posts created"
+puts "#{SponsoredPost.count} posts created"
 puts "#{Comment.count} comments created"

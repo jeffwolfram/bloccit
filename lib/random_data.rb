@@ -21,4 +21,8 @@ def self.random_word
   letters.shuffle!
   letters[0, rand(3..8)].join
 end
+
+def self.random_number
+    rand(100)
+  end
 end
