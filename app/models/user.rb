@@ -1,5 +1,18 @@
 class User < ApplicationRecord
   before_save { self.email = email.downcase if email.present? }
+  before_save :user_caps
+
+  def user_caps
+    var = []
+    if name
+      names = name.split
+      names.each do |l|
+        var.push(l.capitalize)
+      end
+      self.name = var.join(' ')
+    end
+  end
+
 
   validates :name, length: {minimum: 1, maximum: 100 }, presence: true
   validates :password, presence: true, length: {minimum: 6 }, if: "password_digest.nil?"
