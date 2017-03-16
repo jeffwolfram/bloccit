@@ -36,6 +36,9 @@ source 'https://rubygems.org'
 
  gem 'bootstrap-sass'
 
+ #used for encrypting passwords
+ gem 'bcrypt'
+
  gem 'rails-controller-testing'
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
