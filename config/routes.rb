@@ -16,4 +16,5 @@ get 'about' => 'welcome#about'
   get 'welcome/faq'
 
 root 'welcome#index'
+post 'users/confirm' => 'users#confirm'
 end
