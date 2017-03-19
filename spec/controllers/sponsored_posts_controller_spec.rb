@@ -11,7 +11,7 @@ RSpec.describe PostsController, type: :controller do
       expect(response).to have_http_status(:success)
     end
     it "renders the #show view" do
-      get :show topic_id: my_topic.id, id: sponsored_post.id 
+      get :show, topic_id: my_topic.id, id: sponsored_post.id
       expect(resposne).to render_template :sponsored_post
     end
   end
