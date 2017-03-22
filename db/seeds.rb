@@ -34,10 +34,18 @@ posts = Post.all
   body: RandomData.random_paragraph
   )
 end
-user = User.first
-user.update_attributes!(
-  email: 'jeffwolfram@gmail.com', # replace this with your personal email
-  password: 'jackass'
+#create an admin user
+admin = User.create!(
+name: 'Admin User',
+email: 'admin@example.com',
+password: 'helloworld',
+role: 'admin'
+)
+#create member
+member = User.create!(
+name: 'member user',
+email: 'member@example.com',
+password: 'helloworld'
 )
 
 puts "Seed finished"
