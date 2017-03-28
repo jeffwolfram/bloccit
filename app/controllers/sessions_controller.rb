@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
 
   def create
  # #1
+
     user = User.find_by(email: params[:session][:email].downcase)
 
  # #2
@@ -23,4 +24,5 @@ class SessionsController < ApplicationController
     flash[:notice] = "You've been signed out, come back soon!"
     redirect_to root_path
   end
+
 end

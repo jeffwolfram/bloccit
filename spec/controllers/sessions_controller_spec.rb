@@ -12,7 +12,7 @@ RSpec.describe SessionsController, type: :controller do
 
   describe "POST sessions" do
     it "returns http success" do
-      post :create, session: {email: my_user.email}
+      post :create, session: {email: my_user.email, password: my_user.password}
       expect(response).to have_http_status(:success)
     end
 
