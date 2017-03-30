@@ -6,7 +6,7 @@ RSpec.describe Post, type: :model do
   let(:title) { RandomData.random_sentence }
   let(:body) { RandomData.random_paragraph }
   let(:topic) { Topic.create!(name: name, description: description) }
-  let(:user) { User.create!(name: "Bloccit User", email: "user@bloccit.com", password: "password") }
+  let(:user) { User.create!(name: "Bloccit User", email: "use@bloccit.com", password: "password") }
   let(:post) { topic.posts.create!(title: title, body: body, user: user) }
 
   it { is_expected.to have_many(:comments) }
@@ -26,13 +26,14 @@ RSpec.describe Post, type: :model do
   # #2
   describe "attributes" do
     it "has title, body, and user attributes" do
-      expect(post).to have_attributes(title: title, body: body)
+      expect(post).to have_attributes(title: title, body: body, user: user)
     end
   end
 
   describe "voting" do
-# #5
+
     before do
+
       3.times { post.votes.create!(value: 1) }
       2.times { post.votes.create!(value: -1) }
       @up_votes = post.votes.where(value: 1).count
@@ -42,7 +43,9 @@ RSpec.describe Post, type: :model do
 # #6
     describe "#up_votes" do
       it "counts the number of votes with value = 1" do
+          puts user.inspect
         expect( post.up_votes ).to eq(@up_votes)
+
       end
     end
 
@@ -59,5 +62,22 @@ RSpec.describe Post, type: :model do
         expect( post.points ).to eq(@up_votes - @down_votes)
       end
     end
+    describe "#update_rank" do
+      it "calculates the correct rank" do
+        post.update_rank
+        expect(post.rank).to eq (post.points + (post.created_at Time.new(1970,1,1)) / 1.day.seconds)
+
+      end
+      it "updates the rank when an up vote is created" do
+        old_rank = post.rank
+        post.votes.create!(value: -1)
+        expect(post.rank).to eq (old_rank - 1)
+      end
+      it "updates the rank when a down vote is created" do
+         old_rank = post.rank
+         post.votes.create!(value: -1)
+         expect(post.rank).to eq (old_rank - 1)
+       end
+     end
+    end
   end
-end
