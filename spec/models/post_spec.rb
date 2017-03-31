@@ -33,18 +33,23 @@ RSpec.describe Post, type: :model do
   describe "voting" do
 
     before do
-
-      3.times { post.votes.create!(value: 1) }
-      2.times { post.votes.create!(value: -1) }
+      user_one = User.create(name: "Jeff Wolfram", email: "j@g.com", password:"password")
+      user_two = User.create(name: "Wolfram Jeff", email: "g@j.com", password:"password")
+      user_three = User.create(name: "Cool dude", email: "c@d.com", password:"password")
+      post.votes.create!(value: 1, user: user_one)
+      post.votes.create!(value: -1, user: user_three)
+       post.votes.create!(value: -1, user: user_two)
       @up_votes = post.votes.where(value: 1).count
       @down_votes = post.votes.where(value: -1).count
+
+
     end
 
 # #6
     describe "#up_votes" do
       it "counts the number of votes with value = 1" do
           puts user.inspect
-        expect( post.up_votes ).to eq(@up_votes)
+        expect( post.votes.create ).to eq(@up_votes)
 
       end
     end
