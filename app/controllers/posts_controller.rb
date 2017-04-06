@@ -27,7 +27,7 @@ before_action :authorize_user, except: [:show, :new, :create]
     @topic = Topic.find(params[:topic_id])
     @post = @topic.posts.build(post_params)
     @post.user = current_user
-    current_user.favorites.build(post: @post)
+    # current_user.favorites.build(post: @post)
 
 
     if @post.save
