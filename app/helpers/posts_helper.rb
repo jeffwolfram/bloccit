@@ -5,4 +5,7 @@ module PostsHelper
   def moder
     current_user && current_user.moderator?
   end
+  def if_there_are_no_posts?
+    @user.posts.count < 1
+  end
 end
