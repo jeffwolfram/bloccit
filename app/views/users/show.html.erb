@@ -34,3 +34,4 @@
   <%= render @user.comments %>
   <% end %>
   <h2>Favorites</h2>
+<%= render @user.favorites.map(&:post) %>

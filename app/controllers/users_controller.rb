@@ -1,4 +1,7 @@
 class UsersController < ApplicationController
+before_action :require_sign_in, only: [:index, :edit, :update]
+before_action :correct_user, only: [:edit, :update]
+
   def new
     @user = User.new
   end
@@ -21,4 +24,8 @@ class UsersController < ApplicationController
     @user = User.find(params[:id])
       @posts = @user.posts.visible_to(current_user)
   end
+  def index
+    @users = User.all
+  end
+
 end
